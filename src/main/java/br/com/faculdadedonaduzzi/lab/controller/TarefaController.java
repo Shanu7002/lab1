@@ -1,13 +1,20 @@
 package br.com.faculdadedonaduzzi.lab.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import br.com.faculdadedonaduzzi.lab.dto.TarefaDTO;
 import br.com.faculdadedonaduzzi.lab.dto.TarefaReponseDTO;
 import br.com.faculdadedonaduzzi.lab.entity.Task;
 import br.com.faculdadedonaduzzi.lab.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
@@ -45,5 +52,4 @@ public class TarefaController {
         Task savedTask = taskRepository.save(newTask);
         return new TarefaReponseDTO(savedTask);
     }
-
 }

@@ -4,10 +4,10 @@ name: CI Kanban API
 on:
   push:
     branches:
-      - main #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
+      - master #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
   pull_request:
     branches:
-      - main #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
+      - master #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
 
 # 2. O TRABALHO (Jobs)
 jobs:

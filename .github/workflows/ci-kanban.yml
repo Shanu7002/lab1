@@ -1,0 +1,34 @@
+name: CI Kanban API
+
+# 1. GATILHO: Quando este robô deve acordar?
+on:
+  push:
+    branches:
+      - main #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
+  pull_request:
+    branches:
+      - main #VERIFIQUE SE VOCÊ ESTÁ USANDO main OU master e altere para a que você estiver usando
+
+# 2. O TRABALHO (Jobs)
+jobs:
+  build_e_testes:
+    # ONDE o robô vai rodar? (Em um servidor Ubuntu emprestado pelo GitHub)
+    runs-on: ubuntu-latest
+
+    # 3. O PASSO A PASSO
+    steps:
+      # Ação pronta do GitHub para fazer o 'git clone' do seu projeto
+      - name: Baixar o código fonte
+        uses: actions/checkout@v4
+
+      # Ação pronta para instalar o Java 21 no servidor
+      - name: Configurar o Java 21 (Temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven # Guarda downloads em cache para deixar as próximas vezes mais rápidas
+
+      # O comando real que nós digitávamos no terminal
+      - name: Compilar e Testar com Maven
+        run: mvn clean package
